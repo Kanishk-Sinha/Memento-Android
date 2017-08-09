@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data/>
+    <RelativeLayout
+        android:id="@+id/content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ececec"
+        android:animateLayoutChanges="true">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <io.github.kobakei.materialfabspeeddial.FabSpeedDial
+            android:id="@+id/fab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            app:fab_miniFabTextColor="@color/colorBlue2"
+            app:fab_touchGuardColor="@color/colorCream1"/>
+
+        <RelativeLayout
+            android:id="@+id/fab_add_session"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fab_shape"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="24dp"
+            android:visibility="gone">
+
+            <com.kanishk.code.bloop.widget.PrimaryTextStyleMedium
+                android:layout_width="wrap_content"
+                android:layout_height="20sp"
+                android:text="Add new"
+                android:textAllCaps="true"
+                android:textSize="14dp"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:layout_centerVertical="true"
+                android:layout_margin="4dp"/>
+
+        </RelativeLayout>
+
+        <!--<android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_add_session"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="24dp"
+            android:src="@drawable/ic_idea" />-->
+
+        <RelativeLayout
+            android:id="@+id/empty_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/image_empty_state"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_study_notes"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="24dp"/>
+
+            <com.kanishk.code.bloop.widget.HeadingTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_state_pinned_fragment"
+                android:layout_below="@+id/image_empty_state"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="12dp"
+                android:textSize="18dp"
+                android:lineSpacingMultiplier="1.2"
+                android:textAlignment="center"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

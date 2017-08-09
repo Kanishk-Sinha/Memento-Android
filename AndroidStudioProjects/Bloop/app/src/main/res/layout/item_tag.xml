@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="presenter"
+            type="com.kanishk.code.bloop.presenter.adapter.BloopSessionsAdapterPresenter">
+        </variable>
+    </data>
+    <android.support.v7.widget.CardView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="1dp"
+        app:cardCornerRadius="0dp">
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/card_ripple"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleColor="#585858"
+            app:mrl_rippleAlpha="0.2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_margin="12dp">
+
+                <ImageView
+                    android:id="@+id/collection_image"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_folder"/>
+
+                <com.kanishk.code.bloop.widget.HeadingTextView
+                    android:id="@+id/heading"
+                    android:text="@{presenter.heading}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorTextHeading"
+                    android:maxLines="2"
+                    android:textAllCaps="true"
+                    android:ellipsize="end"
+                    android:layout_margin="12dp"/>
+
+            </LinearLayout>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+    </android.support.v7.widget.CardView>
+</layout>

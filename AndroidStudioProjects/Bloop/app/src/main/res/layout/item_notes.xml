@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="presenter"
+            type="com.kanishk.code.bloop.presenter.adapter.BloopAdapterPresenter">
+        </variable>
+    </data>
+    <android.support.v7.widget.CardView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="0dp"
+        app:cardBackgroundColor="#19B5FE">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/note_image_attachment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@color/colorBlueTextStyling"
+                android:visibility="gone"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/note_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Untitled note"
+                android:layout_below="@id/note_image_attachment"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:id="@+id/note_text_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Note Content goes here"
+                android:layout_below="@id/note_heading"
+                android:layout_margin="8dp"/>
+
+            <RelativeLayout
+                android:id="@+id/note_audio_attachment"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/note_text_content"
+                android:visibility="gone"
+                android:layout_margin="8dp">
+
+                <RelativeLayout
+                    android:id="@+id/image_container"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@color/colorBlueTextStyling">
+
+                    <ImageView
+                        android:id="@+id/play_audio"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_play_circle_outline_white_24dp"
+                        android:layout_centerInParent="true"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_toEndOf="@id/image_container"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Audio Recording"
+                        android:layout_marginStart="8dp"/>
+
+                    <TextView
+                        android:id="@+id/duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp"
+                        android:lineSpacingMultiplier="1.2"
+                        android:textColor="@color/colorTextNormal"
+                        android:ellipsize="end"
+                        android:text="00.00.05"
+                        android:layout_toEndOf="@id/image_container"
+                        android:layout_below="@id/text"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>
