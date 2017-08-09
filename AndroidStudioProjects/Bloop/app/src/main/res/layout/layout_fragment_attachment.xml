@@ -1,6 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data/>
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick an option..."
+            android:textSize="16dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_margin="12dp"/>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/attach_from_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/heading"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleColor="#585858"
+            app:mrl_rippleAlpha="0.2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <ImageView
+                    android:id="@+id/image_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_a_photo_black_24dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Camera"
+                    android:layout_toEndOf="@id/image_camera"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:textSize="14dp"/>
+
+            </RelativeLayout>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/attach_from_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/attach_from_camera"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleColor="#585858"
+            app:mrl_rippleAlpha="0.2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <ImageView
+                    android:id="@+id/image_gallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_bloop_photo_count_black"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Image Gallery"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/image_gallery"
+                    android:layout_centerVertical="true"
+                    android:textSize="14dp"/>
+
+            </RelativeLayout>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/attach_audio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/attach_from_gallery"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleColor="#585858"
+            app:mrl_rippleAlpha="0.2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <ImageView
+                    android:id="@+id/audio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_microphone"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Record Audio"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/audio"
+                    android:layout_centerVertical="true"
+                    android:textSize="14dp"/>
+
+            </RelativeLayout>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/attach_checklist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/attach_audio"
+            app:mrl_rippleOverlay="true"
+            app:mrl_rippleColor="#585858"
+            app:mrl_rippleAlpha="0.2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp">
+
+                <ImageView
+                    android:id="@+id/checklist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_check_box_black_24dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Checklist"
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/checklist"
+                    android:layout_centerVertical="true"
+                    android:textSize="14dp"/>
+
+            </RelativeLayout>
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+    </RelativeLayout>
+</layout>

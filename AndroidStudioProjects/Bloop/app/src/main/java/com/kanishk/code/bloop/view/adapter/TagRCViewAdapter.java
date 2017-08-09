@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.kanishk.code.bloop.R;
-import com.kanishk.code.bloop.databinding.ItemBloopSessionBinding;
-import com.kanishk.code.bloop.model.BloopSessionIndex;
+import com.kanishk.code.bloop.databinding.ItemTagBinding;
+import com.kanishk.code.bloop.model.Tag;
 import com.kanishk.code.bloop.model.interfxs.ItemTouchHelperAdapter;
-import com.kanishk.code.bloop.presenter.adapter.BloopSessionsAdapterPresenter;
+import com.kanishk.code.bloop.presenter.adapter.TagRCViewAdapterPresenter;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,12 +18,12 @@ import java.util.List;
  * Created by kanishk on 19/7/17.
  */
 
-public class BloopSessionsAdapter extends RecyclerView.Adapter<BloopSessionsAdapter.BloopSessionsAdapterBH> implements ItemTouchHelperAdapter {
+public class TagRCViewAdapter extends RecyclerView.Adapter<TagRCViewAdapter.TagRCViewAdapterBH> implements ItemTouchHelperAdapter {
 
-    private List<BloopSessionIndex> list;
+    private List<Tag> list;
     private AdapterItemTouchListener mListener;
 
-    public BloopSessionsAdapter(List<BloopSessionIndex> list) {
+    public TagRCViewAdapter(List<Tag> list) {
         this.list = list;
     }
 
@@ -55,19 +55,19 @@ public class BloopSessionsAdapter extends RecyclerView.Adapter<BloopSessionsAdap
     }
 
     @Override
-    public BloopSessionsAdapterBH onCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemBloopSessionBinding bloopSessionBinding = DataBindingUtil.inflate(
+    public TagRCViewAdapterBH onCreateViewHolder(ViewGroup parent, int viewType) {
+        ItemTagBinding bloopSessionBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
-                R.layout.item_bloop_session,
+                R.layout.item_tag,
                 parent,
                 false);
-        return new BloopSessionsAdapterBH(bloopSessionBinding);
+        return new TagRCViewAdapterBH(bloopSessionBinding);
     }
 
     @Override
-    public void onBindViewHolder(BloopSessionsAdapterBH holder, int position) {
-        ItemBloopSessionBinding binding = holder.binding;
-        binding.setPresenter(new BloopSessionsAdapterPresenter(list.get(position)));
+    public void onBindViewHolder(TagRCViewAdapterBH holder, int position) {
+        ItemTagBinding binding = holder.binding;
+        binding.setPresenter(new TagRCViewAdapterPresenter(list.get(position)));
         binding.cardRipple.setOnClickListener(v -> mListener.onItemClicked(list.get(position)));
         binding.heading.setOnClickListener(v -> mListener.onItemClicked(list.get(position)));
     }
@@ -77,11 +77,11 @@ public class BloopSessionsAdapter extends RecyclerView.Adapter<BloopSessionsAdap
         return list.size();
     }
 
-    class BloopSessionsAdapterBH extends RecyclerView.ViewHolder {
+    class TagRCViewAdapterBH extends RecyclerView.ViewHolder {
 
-        private ItemBloopSessionBinding binding;
+        private ItemTagBinding binding;
 
-        BloopSessionsAdapterBH(ItemBloopSessionBinding binding) {
+        TagRCViewAdapterBH(ItemTagBinding binding) {
             super(binding.content);
             this.binding = binding;
         }
@@ -92,8 +92,8 @@ public class BloopSessionsAdapter extends RecyclerView.Adapter<BloopSessionsAdap
     }
 
     public interface AdapterItemTouchListener {
-        void onItemClicked(BloopSessionIndex bloopSessionIndex);
-        void onItemDeleted(BloopSessionIndex bloopSessionIndex);
+        void onItemClicked(Tag tag);
+        void onItemDeleted(Tag tag);
     }
 
 }

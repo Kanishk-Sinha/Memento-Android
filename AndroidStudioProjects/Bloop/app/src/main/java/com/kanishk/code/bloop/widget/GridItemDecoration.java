@@ -1,4 +1,4 @@
-package com.kanishk.code.shutterfly.utils;
+package com.kanishk.code.bloop.widget;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

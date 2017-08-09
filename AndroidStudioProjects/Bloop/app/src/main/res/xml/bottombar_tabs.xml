@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-</PreferenceScreen>
+<tabs>
+    <tab
+        id="@+id/tab_all_notes"
+        icon="@drawable/all_notes"
+        title="All" />
+    <tab
+        id="@+id/tab_photo_notes"
+        icon="@drawable/photo_notes"
+        title="Photo" />
+    <tab
+        id="@+id/tab_audio_notes"
+        icon="@drawable/audio_notes"
+        title="Audio" />
+    <tab
+        id="@+id/tab_checklist_notes"
+        icon="@drawable/checklist_notes"
+        title="Checklist" />
+    <tab
+        id="@+id/tab_quote_notes"
+        icon="@drawable/quote_notes"
+        title="Quote" />
+</tabs>

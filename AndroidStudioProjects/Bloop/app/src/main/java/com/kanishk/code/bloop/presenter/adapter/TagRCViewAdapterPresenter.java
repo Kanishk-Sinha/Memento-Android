@@ -2,36 +2,25 @@ package com.kanishk.code.bloop.presenter.adapter;
 
 import android.databinding.BaseObservable;
 
-import com.kanishk.code.bloop.model.BloopSessionIndex;
+import com.kanishk.code.bloop.model.Tag;
 
 /**
  * Created by kanishk on 19/7/17.
  */
 
-public class BloopSessionsAdapterPresenter extends BaseObservable {
+public class TagRCViewAdapterPresenter extends BaseObservable {
 
-    private final BloopSessionIndex bloopSessionIndex;
+    private final Tag tag;
 
-    public BloopSessionsAdapterPresenter(BloopSessionIndex bloopSessionIndex) {
-        this.bloopSessionIndex = bloopSessionIndex;
-    }
-
-    public String getTimestamp() {
-        if (bloopSessionIndex.getLastOpened() != null)
-            return bloopSessionIndex.getLastOpened();
-        else
-            return "Just now";
+    public TagRCViewAdapterPresenter(Tag tag) {
+        this.tag = tag;
     }
 
     public String getHeading() {
-        if (bloopSessionIndex.getTitle() != null)
-            return bloopSessionIndex.getTitle();
+        if (tag.getTitle() != null)
+            return tag.getTitle();
         else
             return "No title given";
-    }
-
-    public String getMetaContent() {
-        return bloopSessionIndex.getMostRecentBloop();
     }
 
 }

@@ -1,11 +1,8 @@
-package com.kanishk.code.shutterfly.widgets;
+package com.kanishk.code.bloop.widget;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
-
-import com.kanishk.code.shutterfly.utils.FontCache;
 
 
 /**
@@ -34,7 +31,7 @@ public class PrimaryEditTextStyle extends android.support.v7.widget.AppCompatEdi
 
     // SET CUSTOM TYPEFACE FROM CACHE
     private void init() {
-        Typeface font = FontCache.getTypeface("fonts/Montserrat/Montserrat-Regula.ttf", getContext());
+        Typeface font = FontCache.getTypeface("fonts/karla/Karla-Regular.ttf", getContext());
         setTypeface(font);
     }
 }

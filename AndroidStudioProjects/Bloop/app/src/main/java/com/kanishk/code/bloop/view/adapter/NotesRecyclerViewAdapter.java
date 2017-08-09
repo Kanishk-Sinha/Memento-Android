@@ -1,14 +1,24 @@
 package com.kanishk.code.bloop.view.adapter;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.kanishk.code.bloop.R;
-import com.kanishk.code.bloop.databinding.ItemBloopBinding;
+import com.kanishk.code.bloop.data.AppConstants;
+import com.kanishk.code.bloop.databinding.ItemNotesBinding;
 import com.kanishk.code.bloop.model.NotesTable;
 import com.kanishk.code.bloop.model.interfxs.ItemTouchHelperAdapter;
+import com.kanishk.code.bloop.model.notes.ChecklistNoteItem;
+import com.kanishk.code.bloop.presenter.adapter.NotesRCViewPresenter;
+import com.kanishk.code.bloop.utils.ColorFilter;
+import com.kanishk.code.bloop.widget.GridItemDecoration;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,12 +27,14 @@ import java.util.Collections;
  * Created by kanishk on 16/7/17.
  */
 
-public class BloopRecyclerViewAdapter extends RecyclerView.Adapter<BloopRecyclerViewAdapter.BloopRecyclerViewAdapterBH> implements ItemTouchHelperAdapter {
+public class NotesRecyclerViewAdapter extends RecyclerView.Adapter<NotesRecyclerViewAdapter.BloopRecyclerViewAdapterBH> implements ItemTouchHelperAdapter {
 
-    private ArrayList<NotesTable> itemList = new ArrayList<>(0);
+    private Context appContext;
+    private ArrayList<NotesTable> itemList;
     private AdapterItemTouchListener mListener;
 
-    public BloopRecyclerViewAdapter(ArrayList<NotesTable> itemList) {
+    public NotesRecyclerViewAdapter(ArrayList<NotesTable> itemList, Context applicationContext) {
+        this.appContext = applicationContext;
         this.itemList = itemList;
     }
 
@@ -33,9 +45,9 @@ public class BloopRecyclerViewAdapter extends RecyclerView.Adapter<BloopRecycler
 
     @Override
     public BloopRecyclerViewAdapterBH onCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemBloopBinding binding = DataBindingUtil.inflate(
+        ItemNotesBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
-                R.layout.item_bloop,
+                R.layout.item_notes,
                 parent,
                 false);
         return new BloopRecyclerViewAdapterBH(binding);
@@ -43,53 +55,53 @@ public class BloopRecyclerViewAdapter extends RecyclerView.Adapter<BloopRecycler
 
     @Override
     public void onBindViewHolder(BloopRecyclerViewAdapterBH holder, int position) {
-        /*ItemBloopBinding binding = holder.binding;
-        BaseBloop baseBloop;
-        Gson gson = new Gson();
-        baseBloop = gson.fromJson(itemList.get(position).getBaseBloop(), BaseBloop.class);
-        BloopAdapterPresenter presenter = new BloopAdapterPresenter(itemList.get(position));
-        switch (itemList.get(position).getBloopType()) {
-            case 1 :
-                binding.layoutNormalBloop.content.setVisibility(View.VISIBLE);
-                binding.layoutNormalBloop.text.setText(baseBloop.getNormalBloop().getTextContent());
-                if (baseBloop.getBaseBloopLocation() != null && !baseBloop.getBaseBloopLocation().equals(""))
-                    binding.layoutNormalBloop.location.setText(baseBloop.getBaseBloopLocation());
-                if (baseBloop.getNormalBloop().getTitle() != null && !baseBloop.getNormalBloop().getTitle().equals(""))
-                    binding.layoutNormalBloop.title.setText(baseBloop.getNormalBloop().getTitle());
-                else {
-                    binding.layoutNormalBloop.title.setText("No Title Given");
-                }
-                break;
-            case 2 :
-                binding.layoutAudioBloop.content.setVisibility(View.VISIBLE);
-                binding.layoutAudioBloop.text.setText(baseBloop.getAudioBloop().getTitle());
-                binding.layoutAudioBloop.duration.setText(baseBloop.getAudioBloop().getDuration());
-                if (baseBloop.getBaseBloopLocation() != null && !baseBloop.getBaseBloopLocation().equals(""))
-                    binding.layoutAudioBloop.location.setText(baseBloop.getBaseBloopLocation());
-                binding.layoutAudioBloop.playAudio.setOnClickListener(v -> {
-                    mListener.onPlayAudio(baseBloop.getAudioBloop().getFilePath());
-                });
-                break;
-            case 3 :
-                binding.layoutPhotoBloop.content.setVisibility(View.VISIBLE);
-                if (baseBloop.getPhotoBloop().getText() == null || baseBloop.getPhotoBloop().getText().equals(""))
-                    binding.layoutPhotoBloop.text.setVisibility(View.GONE);
-                else
-                    binding.layoutPhotoBloop.text.setText(baseBloop.getPhotoBloop().getText());
-                if (baseBloop.getPhotoBloop().getTitle() != null && !baseBloop.getPhotoBloop().getTitle().equals(""))
-                    binding.layoutPhotoBloop.title.setText(baseBloop.getPhotoBloop().getTitle());
-                else {
-                    binding.layoutPhotoBloop.title.setVisibility(View.GONE);
-                }
-                UniversalImageBindingAdapter.loadImage(binding.layoutPhotoBloop.image, baseBloop.getPhotoBloop().getPath());
-                break;
+        ItemNotesBinding binding = holder.binding;
+        NotesRCViewPresenter presenter = new NotesRCViewPresenter(itemList.get(position), binding);
+        binding.setPresenter(presenter);
+        int color = itemList.get(position).getColor();
+        if (color != 0) {
+            binding.content.setCardBackgroundColor(appContext.getResources().getColor(ColorFilter.getColorForType(itemList.get(position).getColor())));
+            if (color == AppConstants.ColorConstants.COLOR_BLUE_1
+                    || color == AppConstants.ColorConstants.COLOR_BLUE_2
+                    || color == AppConstants.ColorConstants.COLOR_RED_1
+                    || color == AppConstants.ColorConstants.COLOR_RED_2
+                    || color == AppConstants.ColorConstants.COLOR_GREEN_2) {
+                binding.noteHeading.setTextColor(appContext.getResources().getColor(R.color.colorWhite));
+                binding.noteTextContent.setTextColor(appContext.getResources().getColor(R.color.colorWhite));
+            }
         }
-        binding.setPresenter(presenter);*/
+        if (itemList.get(position).getCheckListnote() != null) {
+            setupChecklistMeta(binding, itemList.get(position).getCheckListnote());
+        }
+        binding.content.setOnClickListener(v -> mListener.onItemClicked(itemList.get(position), position));
+        //Type type = new TypeToken<ArrayList<BaseNote>>(){}.getType();
+    }
+
+    private void setupChecklistMeta(ItemNotesBinding binding, String data) {
+        Gson gson = new Gson();
+        ArrayList<ChecklistNoteItem> list = gson.fromJson(data, new TypeToken<ArrayList<ChecklistNoteItem>>(){}.getType());
+
+        binding.checklistRcView.setVisibility(View.VISIBLE);
+        binding.noteTextContent.setVisibility(View.GONE);
+        RecyclerView recyclerView = binding.checklistRcView;
+        LinearLayoutManager grid = new LinearLayoutManager(appContext, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(grid);
+        int spanCount = 1;
+        recyclerView.addItemDecoration(new GridItemDecoration(spanCount, 0, true));
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setHasFixedSize(true);
+
+        ChecklistAdapter adapter = new ChecklistAdapter(list, true);
+        adapter.setHasStableIds(true);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        if (itemList != null)
+            return itemList.size();
+        else
+            return 0;
     }
 
     @Override
@@ -116,11 +128,11 @@ public class BloopRecyclerViewAdapter extends RecyclerView.Adapter<BloopRecycler
 
     class BloopRecyclerViewAdapterBH extends RecyclerView.ViewHolder {
 
-        ItemBloopBinding binding;
+        ItemNotesBinding binding;
 
-        public BloopRecyclerViewAdapterBH(ItemBloopBinding itemBloopBinding) {
-            super(itemBloopBinding.content);
-            this.binding = itemBloopBinding;
+        public BloopRecyclerViewAdapterBH(ItemNotesBinding notesBinding) {
+            super(notesBinding.content);
+            this.binding = notesBinding;
         }
     }
 
@@ -129,7 +141,7 @@ public class BloopRecyclerViewAdapter extends RecyclerView.Adapter<BloopRecycler
     }
 
     public interface AdapterItemTouchListener {
-        void onItemClicked(NotesTable notesTable);
+        void onItemClicked(NotesTable notesTable, int position);
         void onItemDeleted(NotesTable notesTable);
         void onPlayAudio(String path);
     }

@@ -4,8 +4,9 @@ package com.kanishk.code.bloop.data;
  * Created by kanishk on 31/7/17.
  */
 
-public class AppContants {
+public class AppConstants {
     public static class ColorConstants {
+        public static final int COLOR_WHITE_1 = 00;
         public static final int COLOR_RED_1 = 10;
         public static final int COLOR_RED_2 = 11;
         public static final int COLOR_BLUE_1 = 20;

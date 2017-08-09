@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f44336</color>
+    <color name="colorPrimaryDark">#d32f2f</color>
+    <color name="colorBlueTextStyling">#19B5FE</color>
+    <color name="colorAccent">#d32f2f</color>
+    <color name="colorTextHeading">#336E7B</color>
+    <color name="colorTextNormal">#6C7A89</color>
+    <color name="colorBlueGrey300">#90a4ae</color>
+    <color name="colorWhite">#fff</color>
+
+    <color name="tabIconSelected">#22313F</color>
+    <color name="tabIconNormal">#BDC3C7</color>
+
+    <color name="colorRed1">#f44336</color>
+    <color name="colorRed2">#d32f2f</color>
+
+    <color name="colorBlue1">#2196f3</color>
+    <color name="colorBlue2">#9c27b0</color>
+
+    <color name="colorGreen1">#8bc34a</color>
+    <color name="colorGreen2">#4caf50</color>
+
+    <color name="colorYellow1">#ffeb3b</color>
+    <color name="colorYellow2">#fbc02d</color>
+
+    <color name="colorCream1">#F5D76E</color>
+    <color name="colorCream2">#FDE3A7</color>
+
+</resources>

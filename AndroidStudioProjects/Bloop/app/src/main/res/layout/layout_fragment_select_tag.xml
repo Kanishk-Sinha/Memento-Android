@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
-        android:orientation="vertical"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animateLayoutChanges="true">
+    <data/>
+    <RelativeLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select a tag"
+            android:textAllCaps="true"
+            android:layout_margin="12dp"
+            android:textSize="18dp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/heading"/>
 
-    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/empty_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_folder"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hmm, you do not have any tags. "
+                android:layout_below="@id/image"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="12dp"/>
+
+        </RelativeLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="24dp"/>
+
+        <RelativeLayout
+            android:id="@+id/add_tag_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#efefef"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="12dp"/>
+
+            <EditText
+                android:id="@+id/add_tag_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@android:color/transparent"
+                android:hint="Add a tag here..."
+                android:layout_toEndOf="@id/close"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:id="@+id/add_tag_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_checked"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="12dp"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 </layout>

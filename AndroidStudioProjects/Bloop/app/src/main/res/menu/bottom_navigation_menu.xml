@@ -1,4 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_all_notes"
+        android:title="All"
+        android:icon="@drawable/tab_icon_mix_note_normal"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_photo_notes"
+        android:title="Photos"
+        android:icon="@drawable/tab_icon_photo_note_normal"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_audio_notes"
+        android:title="Audio"
+        android:icon="@drawable/tab_icon_audio_note_normal"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_checklist_notes"
+        android:title="Checklists"
+        android:icon="@drawable/tab_icon_checklist_note_normal"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_quote_notes"
+        android:title="Quotes"
+        android:icon="@drawable/tab_icon_quotes_note_normal"
+        app:showAsAction="ifRoom" />
 
 </menu>

@@ -4,7 +4,7 @@
     <data>
         <variable
             name="presenter"
-            type="com.kanishk.code.bloop.presenter.adapter.BloopSessionsAdapterPresenter">
+            type="com.kanishk.code.bloop.presenter.adapter.TagRCViewAdapterPresenter">
         </variable>
     </data>
     <android.support.v7.widget.CardView

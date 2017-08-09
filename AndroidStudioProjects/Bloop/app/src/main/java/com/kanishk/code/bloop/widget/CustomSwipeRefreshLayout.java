@@ -1,4 +1,4 @@
-package com.kanishk.code.shutterfly.widgets;
+package com.kanishk.code.bloop.widget;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
